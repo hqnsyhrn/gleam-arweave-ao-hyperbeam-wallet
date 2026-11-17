@@ -50,6 +50,9 @@ export const USER_ERRORS = {
   keyfileWrongKeyType: 'That file isn\'t a valid Arweave keyfile. Expected key type "RSA", got "{kty}".',
   keyfileEmptyField: 'That file isn\'t a valid Arweave keyfile. Field "{key}" must be a non-empty string.',
   keyfileBadField: 'That file isn\'t a valid Arweave keyfile. Field "{key}" is not valid base64url.',
+  keyfileWrongExponent: 'That file isn\'t a valid Arweave keyfile. Expected public exponent "AQAB", got "{e}".',
+  keyfileWrongModulusLength:
+    "That file isn't a valid Arweave keyfile. Its key is {size} bytes, but Gleam needs a 4096-bit key (512 bytes).",
   keyfileNoPrivateKey: "This keyfile has no private key.",
   keyfileDownloadsUnavailable: "Keyfile downloads aren't available here.",
   keyfileNoneWatch: "This wallet is watch-only. Gleam has no keyfile for it.",

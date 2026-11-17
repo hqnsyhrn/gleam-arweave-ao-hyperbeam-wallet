@@ -1,8 +1,13 @@
 import { addressFromOwner } from "./address";
 import type { JWKInterface } from "../models/wallet";
 import { userErrorMessage } from "../models/user-errors";
+import { base64UrlToBytes } from "../vault/base64";
 
 const REQUIRED_JWK_FIELDS = ["kty", "e", "n", "d", "p", "q", "dp", "dq", "qi"] as const;
+
+/** Arweave keys are RSA-4096: a 512-byte modulus, public exponent 65537. */
+const RSA_MODULUS_BYTES = 512;
+const RSA_PUBLIC_EXPONENT = "AQAB";
 
 const BASE64URL_PATTERN = /^[A-Za-z0-9_-]+$/;
 
@@ -61,6 +66,33 @@ export function validateJWKShape(input: unknown): JWKValidationResult {
         reason: userErrorMessage("keyfileBadField", { key: field }),
       };
     }
+  }
+
+  // A short modulus is factorable, and the public key is published in
+  // every transaction, so a weak key is a silent downgrade to no
+  // security at all. The hardware-wallet path already enforces this
+  // length; import must not be the one entry that doesn't.
+  if (candidate.e !== RSA_PUBLIC_EXPONENT) {
+    return {
+      valid: false,
+      reason: userErrorMessage("keyfileWrongExponent", { e: String(candidate.e) }),
+    };
+  }
+
+  let modulus: Uint8Array;
+  try {
+    modulus = base64UrlToBytes(candidate.n as string);
+  } catch {
+    return {
+      valid: false,
+      reason: userErrorMessage("keyfileBadField", { key: "n" }),
+    };
+  }
+  if (modulus.length !== RSA_MODULUS_BYTES) {
+    return {
+      valid: false,
+      reason: userErrorMessage("keyfileWrongModulusLength", { size: modulus.length }),
+    };
   }
 
   return {

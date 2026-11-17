@@ -101,18 +101,31 @@ describe("validateJWKShape", () => {
     expect(result.valid).toBe(false);
   });
 
-  it("accepts a well-formed RSA JWK shape", () => {
-    const result = validateJWKShape({
-      kty: "RSA",
-      e: "AQAB",
-      n: "abc-_123",
-      d: "abc-_123",
-      p: "abc-_123",
-      q: "abc-_123",
-      dp: "abc-_123",
-      dq: "abc-_123",
-      qi: "abc-_123",
-    });
+  it("accepts a generated RSA-4096 JWK", async () => {
+    const result = validateJWKShape(await generateJWK());
     expect(result.valid).toBe(true);
-  });
+  }, 20_000);
+
+  it("rejects a 1024-bit RSA key", async () => {
+    const pair = await crypto.subtle.generateKey(
+      { name: "RSA-PSS", modulusLength: 1024, publicExponent: new Uint8Array([0x01, 0x00, 0x01]), hash: "SHA-256" },
+      true,
+      ["sign", "verify"],
+    );
+    const jwk = await crypto.subtle.exportKey("jwk", pair.privateKey);
+    const result = validateJWKShape(jwk);
+    expect(result.valid).toBe(false);
+    if (!result.valid) {
+      expect(result.reason).toMatch(/4096-bit/);
+    }
+  }, 20_000);
+
+  it("rejects a non-65537 public exponent", async () => {
+    const jwk = await generateJWK();
+    const result = validateJWKShape({ ...jwk, e: "AQAC" });
+    expect(result.valid).toBe(false);
+    if (!result.valid) {
+      expect(result.reason).toMatch(/AQAB/);
+    }
+  }, 20_000);
 });

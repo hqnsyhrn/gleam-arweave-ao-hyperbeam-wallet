@@ -42,6 +42,9 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "That file isn't a valid Arweave keyfile. Expected key type \"RSA\", got \"{kty}\".",
     keyfileEmptyField: "That file isn't a valid Arweave keyfile. Field \"{key}\" must be a non-empty string.",
     keyfileBadField: "That file isn't a valid Arweave keyfile. Field \"{key}\" is not valid base64url.",
+    keyfileWrongExponent: "That file isn't a valid Arweave keyfile. Expected public exponent \"AQAB\", got \"{e}\".",
+    keyfileWrongModulusLength:
+      "That file isn't a valid Arweave keyfile. Its key is {size} bytes, but Gleam needs a 4096-bit key (512 bytes).",
     keyfileNoPrivateKey: "This keyfile has no private key.",
     keyfileDownloadsUnavailable: "Keyfile downloads aren't available here.",
     keyfileNoneWatch: "This wallet is watch-only. Gleam has no keyfile for it.",
@@ -254,6 +257,10 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "Ese archivo no es un archivo de claves de Arweave válido. Se esperaba el tipo de clave \"RSA\" y se recibió \"{kty}\".",
     keyfileEmptyField: "Ese archivo no es un archivo de claves de Arweave válido. El campo \"{key}\" debe ser un texto no vacío.",
     keyfileBadField: "Ese archivo no es un archivo de claves de Arweave válido. El campo \"{key}\" no es base64url válido.",
+    keyfileWrongExponent:
+      "Ese archivo no es un archivo de claves de Arweave válido. Se esperaba el exponente público \"AQAB\" y se recibió \"{e}\".",
+    keyfileWrongModulusLength:
+      "Ese archivo no es un archivo de claves de Arweave válido. Su clave tiene {size} bytes, pero Gleam necesita una clave de 4096 bits (512 bytes).",
     keyfileNoPrivateKey: "Este archivo de claves no tiene clave privada.",
     keyfileDownloadsUnavailable: "Las descargas de archivos de claves no están disponibles aquí.",
     keyfileNoneWatch: "Esta billetera es de solo lectura. Gleam no tiene un archivo de claves para ella.",
@@ -465,6 +472,10 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "File itu bukan keyfile Arweave yang valid. Jenis kunci seharusnya \"RSA\", tetapi \"{kty}\".",
     keyfileEmptyField: "File itu bukan keyfile Arweave yang valid. Kolom \"{key}\" harus berupa string yang tidak kosong.",
     keyfileBadField: "File itu bukan keyfile Arweave yang valid. Kolom \"{key}\" bukan base64url yang valid.",
+    keyfileWrongExponent:
+      "File itu bukan keyfile Arweave yang valid. Eksponen publik seharusnya \"AQAB\", tetapi \"{e}\".",
+    keyfileWrongModulusLength:
+      "File itu bukan keyfile Arweave yang valid. Kuncinya {size} byte, tetapi Gleam membutuhkan kunci 4096-bit (512 byte).",
     keyfileNoPrivateKey: "Keyfile ini tidak memiliki kunci privat.",
     keyfileDownloadsUnavailable: "Unduhan keyfile tidak tersedia di sini.",
     keyfileNoneWatch: "Dompet ini hanya pantau. Gleam tidak memiliki keyfile-nya.",
@@ -676,6 +687,10 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "Esse arquivo não é um keyfile Arweave válido. Tipo de chave esperado \"RSA\", recebido \"{kty}\".",
     keyfileEmptyField: "Esse arquivo não é um keyfile Arweave válido. O campo \"{key}\" precisa ser um texto não vazio.",
     keyfileBadField: "Esse arquivo não é um keyfile Arweave válido. O campo \"{key}\" não é base64url válido.",
+    keyfileWrongExponent:
+      "Esse arquivo não é um keyfile Arweave válido. Expoente público esperado \"AQAB\", recebido \"{e}\".",
+    keyfileWrongModulusLength:
+      "Esse arquivo não é um keyfile Arweave válido. Sua chave tem {size} bytes, mas o Gleam precisa de uma chave de 4096 bits (512 bytes).",
     keyfileNoPrivateKey: "Este keyfile não tem chave privada.",
     keyfileDownloadsUnavailable: "Downloads de keyfile não estão disponíveis aqui.",
     keyfileNoneWatch: "Esta carteira é somente leitura. O Gleam não tem keyfile dela.",
@@ -887,6 +902,9 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "Tệp này không phải tệp khóa Arweave hợp lệ. Cần loại khóa “RSA”, nhận được “{kty}”.",
     keyfileEmptyField: "Tệp này không phải tệp khóa Arweave hợp lệ. Trường “{key}” phải là chuỗi không rỗng.",
     keyfileBadField: "Tệp này không phải tệp khóa Arweave hợp lệ. Trường “{key}” không phải base64url hợp lệ.",
+    keyfileWrongExponent: "Tệp này không phải tệp khóa Arweave hợp lệ. Cần số mũ công khai “AQAB”, nhận được “{e}”.",
+    keyfileWrongModulusLength:
+      "Tệp này không phải tệp khóa Arweave hợp lệ. Khóa của nó dài {size} byte, nhưng Gleam cần khóa 4096-bit (512 byte).",
     keyfileNoPrivateKey: "Tệp khóa này không có khóa riêng tư.",
     keyfileDownloadsUnavailable: "Không thể tải tệp khóa xuống ở đây.",
     keyfileNoneWatch: "Ví này chỉ xem. Gleam không có tệp khóa cho ví này.",
@@ -1098,6 +1116,9 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "Bu dosya geçerli bir Arweave keyfile'ı değil. Beklenen anahtar türü “RSA”, gelen: “{kty}”.",
     keyfileEmptyField: "Bu dosya geçerli bir Arweave keyfile'ı değil. “{key}” alanı boş olmayan bir metin olmalıdır.",
     keyfileBadField: "Bu dosya geçerli bir Arweave keyfile'ı değil. “{key}” alanı geçerli base64url değil.",
+    keyfileWrongExponent: "Bu dosya geçerli bir Arweave keyfile'ı değil. Beklenen genel üs “AQAB”, gelen: “{e}”.",
+    keyfileWrongModulusLength:
+      "Bu dosya geçerli bir Arweave keyfile'ı değil. Anahtarı {size} bayt, ama Gleam 4096-bit (512 bayt) bir anahtar ister.",
     keyfileNoPrivateKey: "Bu keyfile'da özel anahtar yok.",
     keyfileDownloadsUnavailable: "Keyfile indirme burada kullanılamıyor.",
     keyfileNoneWatch: "Bu cüzdan yalnızca izleme amaçlı. Gleam'de bunun için keyfile yok.",
@@ -1309,6 +1330,10 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "Этот файл не является корректным файлом ключа Arweave. Ожидался тип ключа «RSA», получен «{kty}».",
     keyfileEmptyField: "Этот файл не является корректным файлом ключа Arweave. Поле «{key}» должно быть непустой строкой.",
     keyfileBadField: "Этот файл не является корректным файлом ключа Arweave. Поле «{key}» не в формате base64url.",
+    keyfileWrongExponent:
+      "Этот файл не является корректным файлом ключа Arweave. Ожидался открытый показатель «AQAB», получен «{e}».",
+    keyfileWrongModulusLength:
+      "Этот файл не является корректным файлом ключа Arweave. Длина ключа {size} байт, а Gleam нужен ключ 4096 бит (512 байт).",
     keyfileNoPrivateKey: "В этом файле ключа нет закрытого ключа.",
     keyfileDownloadsUnavailable: "Загрузка файла ключа здесь недоступна.",
     keyfileNoneWatch: "Этот кошелёк только для просмотра. У Gleam нет для него файла ключа.",
@@ -1520,6 +1545,10 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "そのファイルは有効な Arweave キーファイルではありません。鍵の種類は「RSA」である必要がありますが、「{kty}」でした。",
     keyfileEmptyField: "そのファイルは有効な Arweave キーファイルではありません。フィールド「{key}」は空でない文字列である必要があります。",
     keyfileBadField: "そのファイルは有効な Arweave キーファイルではありません。フィールド「{key}」が有効な base64url ではありません。",
+    keyfileWrongExponent:
+      "そのファイルは有効な Arweave キーファイルではありません。公開指数は「AQAB」である必要がありますが、「{e}」でした。",
+    keyfileWrongModulusLength:
+      "そのファイルは有効な Arweave キーファイルではありません。鍵の長さは {size} バイトですが、Gleam には 4096 ビット（512 バイト）の鍵が必要です。",
     keyfileNoPrivateKey: "このキーファイルには秘密鍵がありません。",
     keyfileDownloadsUnavailable: "ここではキーファイルをダウンロードできません。",
     keyfileNoneWatch: "このウォレットは監視専用です。Gleam にはこのウォレットのキーファイルがありません。",
@@ -1731,6 +1760,9 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "올바른 Arweave 키파일이 아니에요. 키 유형은 \"RSA\"여야 하지만 \"{kty}\"예요.",
     keyfileEmptyField: "올바른 Arweave 키파일이 아니에요. \"{key}\" 필드는 비어 있지 않은 문자열이어야 해요.",
     keyfileBadField: "올바른 Arweave 키파일이 아니에요. \"{key}\" 필드가 올바른 base64url이 아니에요.",
+    keyfileWrongExponent: "올바른 Arweave 키파일이 아니에요. 공개 지수는 \"AQAB\"여야 하지만 \"{e}\"예요.",
+    keyfileWrongModulusLength:
+      "올바른 Arweave 키파일이 아니에요. 키 길이가 {size}바이트인데, Gleam에는 4096비트(512바이트) 키가 필요해요.",
     keyfileNoPrivateKey: "이 키파일에는 개인 키가 없어요.",
     keyfileDownloadsUnavailable: "여기서는 키파일을 다운로드할 수 없어요.",
     keyfileNoneWatch: "조회 전용 지갑이에요. Gleam에 이 지갑의 키파일이 없어요.",
@@ -1942,6 +1974,8 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "该文件不是有效的 Arweave 密钥文件。密钥类型应为“RSA”，实际为“{kty}”。",
     keyfileEmptyField: "该文件不是有效的 Arweave 密钥文件。字段“{key}”必须是非空字符串。",
     keyfileBadField: "该文件不是有效的 Arweave 密钥文件。字段“{key}”不是有效的 base64url。",
+    keyfileWrongExponent: "该文件不是有效的 Arweave 密钥文件。公开指数应为“AQAB”，实际为“{e}”。",
+    keyfileWrongModulusLength: "该文件不是有效的 Arweave 密钥文件。密钥长度为 {size} 字节，但 Gleam 需要 4096 位密钥（512 字节）。",
     keyfileNoPrivateKey: "此密钥文件不含私钥。",
     keyfileDownloadsUnavailable: "此处无法下载密钥文件。",
     keyfileNoneWatch: "此钱包为仅观察钱包，Gleam 没有它的密钥文件。",
@@ -2154,6 +2188,8 @@ export const errors = defineMessages({
     keyfileWrongKeyType: "該檔案不是有效的 Arweave 金鑰檔案。金鑰類型應為「RSA」，實際為「{kty}」。",
     keyfileEmptyField: "該檔案不是有效的 Arweave 金鑰檔案。欄位「{key}」必須是非空字串。",
     keyfileBadField: "該檔案不是有效的 Arweave 金鑰檔案。欄位「{key}」不是有效的 base64url。",
+    keyfileWrongExponent: "該檔案不是有效的 Arweave 金鑰檔案。公開指數應為「AQAB」，實際為「{e}」。",
+    keyfileWrongModulusLength: "該檔案不是有效的 Arweave 金鑰檔案。金鑰長度為 {size} 位元組，但 Gleam 需要 4096 位元金鑰（512 位元組）。",
     keyfileNoPrivateKey: "此金鑰檔案不含私鑰。",
     keyfileDownloadsUnavailable: "此處無法下載金鑰檔案。",
     keyfileNoneWatch: "此錢包為僅觀察錢包，Gleam 沒有它的金鑰檔案。",
